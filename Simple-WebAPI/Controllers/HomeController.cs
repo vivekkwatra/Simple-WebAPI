@@ -7,16 +7,12 @@ using System.Web.Http;
 
 namespace Simple_WebAPI.Controllers
 {
-    //DbContext.StudentEntities studentEntities = new DbContext.StudentEntities();
-
-    public class HomeController : ApiController
+   
+    public class HomeController : Controller
     {
-        public IHttpActionResult GetStudents()
+        public ActionResult Index()
         {
-            //var query = studentEntities.StudentMasters.ToList();
-            var query = "Hello";
-
-            return Ok(query);
+            return View();
         }
     }
 }

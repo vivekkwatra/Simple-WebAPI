@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Web.Http.OData.Builder;
 
 namespace Simple_WebAPI
 {
@@ -25,6 +26,11 @@ namespace Simple_WebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Simple_WebAPI.Models.Employee>("Employees");
+            config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
+
         }
     }
 }
